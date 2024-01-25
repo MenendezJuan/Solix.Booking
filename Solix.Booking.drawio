@@ -1,0 +1,120 @@
+<mxfile host="app.diagrams.net" modified="2024-01-25T19:41:37.768Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" etag="ntFEEOrd9K5y-GM3pI6z" version="23.0.2" type="device">
+  <diagram name="Página-1" id="XmWoD83F6k8KQUqt2oZy">
+    <mxGraphModel dx="1050" dy="665" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="aWT5pZ-SnrIrNkeUB_Ab-16" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="210" y="170" width="730" height="490" as="geometry" />
+        </mxCell>
+        <mxCell id="aWT5pZ-SnrIrNkeUB_Ab-1" value="Client" style="points=[[0.35,0,0],[0.98,0.51,0],[1,0.71,0],[0.67,1,0],[0,0.795,0],[0,0.65,0]];verticalLabelPosition=bottom;sketch=0;html=1;verticalAlign=top;aspect=fixed;align=center;pointerEvents=1;shape=mxgraph.cisco19.user;fillColor=#005073;strokeColor=none;" parent="1" vertex="1">
+          <mxGeometry x="20" y="414" width="50" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="aWT5pZ-SnrIrNkeUB_Ab-2" value="Azure Subscription" style="sketch=0;pointerEvents=1;shadow=0;dashed=0;html=1;strokeColor=none;fillColor=#505050;labelPosition=left;verticalLabelPosition=middle;outlineConnect=0;verticalAlign=middle;align=right;shape=mxgraph.office.clouds.azure;" parent="1" vertex="1">
+          <mxGeometry x="150" y="180" width="103" height="66" as="geometry" />
+        </mxCell>
+        <mxCell id="aWT5pZ-SnrIrNkeUB_Ab-4" value="Azure Active Directory" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/identity/Azure_Active_Directory.svg;labelBackgroundColor=none;labelPosition=center;verticalLabelPosition=top;verticalAlign=bottom;" parent="1" vertex="1">
+          <mxGeometry x="308" y="302" width="70" height="64" as="geometry" />
+        </mxCell>
+        <mxCell id="aWT5pZ-SnrIrNkeUB_Ab-5" value="Resource Group" style="fontStyle=0;verticalAlign=top;align=center;spacingTop=-2;fillColor=none;rounded=0;whiteSpace=wrap;html=1;strokeColor=#919191;strokeWidth=2;dashed=1;container=1;collapsible=0;expand=0;recursiveResize=0;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="420" y="220" width="490" height="410" as="geometry" />
+        </mxCell>
+        <mxCell id="aWT5pZ-SnrIrNkeUB_Ab-6" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="aWT5pZ-SnrIrNkeUB_Ab-5" vertex="1">
+          <mxGeometry x="50" y="138.5" width="120" height="181.5" as="geometry" />
+        </mxCell>
+        <mxCell id="aWT5pZ-SnrIrNkeUB_Ab-8" value="App Service" style="image;sketch=0;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/App_Services.svg;labelBackgroundColor=none;" parent="aWT5pZ-SnrIrNkeUB_Ab-5" vertex="1">
+          <mxGeometry x="80" y="162" width="50" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="aWT5pZ-SnrIrNkeUB_Ab-9" value="App Service Plan" style="image;sketch=0;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/WebHosting.svg;labelBackgroundColor=none;" parent="aWT5pZ-SnrIrNkeUB_Ab-5" vertex="1">
+          <mxGeometry x="30" y="290" width="50" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="aWT5pZ-SnrIrNkeUB_Ab-10" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="aWT5pZ-SnrIrNkeUB_Ab-5" vertex="1">
+          <mxGeometry x="250" y="90" width="200" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="aWT5pZ-SnrIrNkeUB_Ab-11" value="SQL Server" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/databases/SQL_Server.svg;labelBackgroundColor=none;" parent="aWT5pZ-SnrIrNkeUB_Ab-5" vertex="1">
+          <mxGeometry x="268" y="96" width="68" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="aWT5pZ-SnrIrNkeUB_Ab-12" value="SQL Database" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/databases/SQL_Database.svg;labelBackgroundColor=none;" parent="aWT5pZ-SnrIrNkeUB_Ab-5" vertex="1">
+          <mxGeometry x="380" y="98" width="48" height="64" as="geometry" />
+        </mxCell>
+        <mxCell id="aWT5pZ-SnrIrNkeUB_Ab-13" value="Application Insight" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/devops/Application_Insights.svg;labelBackgroundColor=none;" parent="aWT5pZ-SnrIrNkeUB_Ab-5" vertex="1">
+          <mxGeometry x="360" y="260" width="34" height="48.68" as="geometry" />
+        </mxCell>
+        <mxCell id="aWT5pZ-SnrIrNkeUB_Ab-14" value="Azure Key Vault" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/security/Key_Vaults.svg;labelPosition=center;verticalLabelPosition=top;verticalAlign=bottom;" parent="aWT5pZ-SnrIrNkeUB_Ab-5" vertex="1">
+          <mxGeometry x="80" y="28" width="59" height="59" as="geometry" />
+        </mxCell>
+        <mxCell id="aWT5pZ-SnrIrNkeUB_Ab-26" value="Se conecta&lt;br&gt;&lt;br&gt;a la db" style="endArrow=classic;startArrow=classic;html=1;rounded=0;exitX=1.047;exitY=0.174;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=1;entryDx=0;entryDy=0;labelBackgroundColor=none;" parent="aWT5pZ-SnrIrNkeUB_Ab-5" source="aWT5pZ-SnrIrNkeUB_Ab-6" target="aWT5pZ-SnrIrNkeUB_Ab-10" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="180" y="220" as="sourcePoint" />
+            <mxPoint x="230" y="170" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="aWT5pZ-SnrIrNkeUB_Ab-27" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.795;exitDx=0;exitDy=0;exitPerimeter=0;" parent="aWT5pZ-SnrIrNkeUB_Ab-5" source="aWT5pZ-SnrIrNkeUB_Ab-6" target="aWT5pZ-SnrIrNkeUB_Ab-13" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="200" y="300" as="sourcePoint" />
+            <mxPoint x="250" y="250" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="aWT5pZ-SnrIrNkeUB_Ab-28" value="Invoca hacia el&lt;br&gt;dado que solo guarda registros" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;" parent="aWT5pZ-SnrIrNkeUB_Ab-27" vertex="1" connectable="0">
+          <mxGeometry x="0.1097" y="-2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="aWT5pZ-SnrIrNkeUB_Ab-32" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;entryX=0.508;entryY=1.064;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" parent="aWT5pZ-SnrIrNkeUB_Ab-5" source="aWT5pZ-SnrIrNkeUB_Ab-6" target="aWT5pZ-SnrIrNkeUB_Ab-14" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="100" y="150" as="sourcePoint" />
+            <mxPoint x="150" y="100" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="aWT5pZ-SnrIrNkeUB_Ab-7" value="" style="image;sketch=0;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/ResourceGroup.svg;" parent="1" vertex="1">
+          <mxGeometry x="380" y="230" width="50" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="aWT5pZ-SnrIrNkeUB_Ab-17" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="980" y="310" width="80" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="aWT5pZ-SnrIrNkeUB_Ab-15" value="" style="aspect=fixed;sketch=0;html=1;dashed=0;whitespace=wrap;fillColor=#2875E2;strokeColor=#ffffff;points=[[0.005,0.63,0],[0.1,0.2,0],[0.9,0.2,0],[0.5,0,0],[0.995,0.63,0],[0.72,0.99,0],[0.5,1,0],[0.28,0.99,0]];shape=mxgraph.kubernetes.icon2;prIcon=api" parent="1" vertex="1">
+          <mxGeometry x="995" y="330" width="50" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="aWT5pZ-SnrIrNkeUB_Ab-18" value="" style="aspect=fixed;sketch=0;html=1;dashed=0;whitespace=wrap;fillColor=#2875E2;strokeColor=#ffffff;points=[[0.005,0.63,0],[0.1,0.2,0],[0.9,0.2,0],[0.5,0,0],[0.995,0.63,0],[0.72,0.99,0],[0.5,1,0],[0.28,0.99,0]];shape=mxgraph.kubernetes.icon2;prIcon=api" parent="1" vertex="1">
+          <mxGeometry x="995" y="410" width="50" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="aWT5pZ-SnrIrNkeUB_Ab-19" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;exitX=1;exitY=0.71;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="aWT5pZ-SnrIrNkeUB_Ab-1" target="aWT5pZ-SnrIrNkeUB_Ab-6" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="140" y="470" as="sourcePoint" />
+            <mxPoint x="190" y="420" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="aWT5pZ-SnrIrNkeUB_Ab-21" value="El cliente hace una peticion a la API" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=#FFFFFF;" parent="aWT5pZ-SnrIrNkeUB_Ab-19" vertex="1" connectable="0">
+          <mxGeometry x="-0.156" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="aWT5pZ-SnrIrNkeUB_Ab-22" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.451;entryY=0.963;entryDx=0;entryDy=0;entryPerimeter=0;dashed=1;" parent="1" target="aWT5pZ-SnrIrNkeUB_Ab-4" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="340" y="450" as="sourcePoint" />
+            <mxPoint x="390" y="390" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="aWT5pZ-SnrIrNkeUB_Ab-23" value="Azure autentica" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="aWT5pZ-SnrIrNkeUB_Ab-22" vertex="1" connectable="0">
+          <mxGeometry x="0.2187" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="aWT5pZ-SnrIrNkeUB_Ab-29" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=-0.075;entryY=0.72;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="aWT5pZ-SnrIrNkeUB_Ab-6" target="aWT5pZ-SnrIrNkeUB_Ab-17" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="650" y="480" as="sourcePoint" />
+            <mxPoint x="700" y="430" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="aWT5pZ-SnrIrNkeUB_Ab-31" value="Se conecta a servicios externos y recibe una rta" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="aWT5pZ-SnrIrNkeUB_Ab-29" vertex="1" connectable="0">
+          <mxGeometry x="-0.149" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="aWT5pZ-SnrIrNkeUB_Ab-30" value="Api" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="990" y="500" width="60" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
