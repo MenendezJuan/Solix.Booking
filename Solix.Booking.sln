@@ -19,6 +19,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solix.Booking.Domain", "src
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solix.Booking.Application", "src\Solix.Booking.Application\Solix.Booking.Application.csproj", "{A998BCA6-1833-42CE-9433-F13EB02FF8B0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solix.Booking.Persistence", "src\Solix.Booking.Persistence\Solix.Booking.Persistence.csproj", "{AA577336-B45B-4476-B644-4F794F769CFC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solix.Booking.External", "src\Solix.Booking.External\Solix.Booking.External.csproj", "{15FE38B0-9EFF-429F-8669-6987D19D0199}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solix.Booking.Common", "src\Solix.Booking.Common\Solix.Booking.Common.csproj", "{2A991F56-F970-4D4D-A3C8-A55F39B86051}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +43,18 @@ Global
 		{A998BCA6-1833-42CE-9433-F13EB02FF8B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A998BCA6-1833-42CE-9433-F13EB02FF8B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A998BCA6-1833-42CE-9433-F13EB02FF8B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA577336-B45B-4476-B644-4F794F769CFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA577336-B45B-4476-B644-4F794F769CFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA577336-B45B-4476-B644-4F794F769CFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA577336-B45B-4476-B644-4F794F769CFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15FE38B0-9EFF-429F-8669-6987D19D0199}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15FE38B0-9EFF-429F-8669-6987D19D0199}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15FE38B0-9EFF-429F-8669-6987D19D0199}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15FE38B0-9EFF-429F-8669-6987D19D0199}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A991F56-F970-4D4D-A3C8-A55F39B86051}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A991F56-F970-4D4D-A3C8-A55F39B86051}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A991F56-F970-4D4D-A3C8-A55F39B86051}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A991F56-F970-4D4D-A3C8-A55F39B86051}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -49,6 +67,9 @@ Global
 		{872B2844-5759-4058-8290-78FB057EDBD1} = {A8C9A5DB-1608-446E-8951-C801A0269421}
 		{D015ECB8-CE65-486F-87C6-A6EBE066F60D} = {C67AC168-C189-45B0-949E-EBAF71A87242}
 		{A998BCA6-1833-42CE-9433-F13EB02FF8B0} = {C67AC168-C189-45B0-949E-EBAF71A87242}
+		{AA577336-B45B-4476-B644-4F794F769CFC} = {ACB480A2-D3D2-4B26-8439-FABEFC37FB69}
+		{15FE38B0-9EFF-429F-8669-6987D19D0199} = {ACB480A2-D3D2-4B26-8439-FABEFC37FB69}
+		{2A991F56-F970-4D4D-A3C8-A55F39B86051} = {A661E56E-42EF-4DA5-9B51-DD299D9E246E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {891362E4-3D21-45A0-A043-4EB9BE41F946}
