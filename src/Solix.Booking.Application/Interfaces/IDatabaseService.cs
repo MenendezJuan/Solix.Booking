@@ -12,10 +12,10 @@ namespace Solix.Booking.Application.Interfaces
 {
 	public interface IDatabaseService
 	{
-		DbSet<Usuario> usuarios { get; set; }
+		DbSet<Usuario> usuario { get; set; }
 
-		DbSet<Cliente> clientes { get; set; }
-		DbSet<Reserva> reservas { get; set; }
+		DbSet<Cliente> cliente { get; set; }
+		DbSet<Reserva> reserva { get; set; }
 		Task<bool> SaveAsync();
 
 	}

@@ -3,6 +3,7 @@ using Solix.Booking.Application.Interfaces;
 using Solix.Booking.Domain.Entities.Clientes;
 using Solix.Booking.Domain.Entities.Reservas;
 using Solix.Booking.Domain.Entities.Usuarios;
+using Solix.Booking.Persistence.Configurations;
 using System.Reflection;
 
 namespace Solix.Booking.Persistence.Database
@@ -18,9 +19,9 @@ namespace Solix.Booking.Persistence.Database
 
 		}
 
-		public DbSet<Usuario> usuarios { get; set; }
-		public DbSet<Cliente> clientes { get; set; }
-		public DbSet<Reserva> reservas { get; set; }
+		public virtual DbSet<Usuario> usuario { get; set; }
+		public virtual DbSet<Cliente> cliente { get; set; }
+		public virtual DbSet<Reserva> reserva { get; set; }
 
 		public async Task<bool> SaveAsync()
 		{
@@ -30,7 +31,17 @@ namespace Solix.Booking.Persistence.Database
 		//Esto me mapea directamente las configuraciones realizadas
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
-			modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+			base.OnModelCreating(modelBuilder);
+			EntityConfiguration(modelBuilder);
 		}
+
+		private void EntityConfiguration(ModelBuilder modelBuilder) 
+			{
+			new ConfiguracionUsuario(modelBuilder.Entity<Usuario>());
+			new ConfiguracionCliente(modelBuilder.Entity<Cliente>());
+			new ConfiguracionReserva(modelBuilder.Entity<Reserva>());
+		} 
+
+
 	}
 }

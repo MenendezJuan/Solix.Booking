@@ -7,7 +7,7 @@ namespace Solix.Booking.Persistence.Configurations
 	{
 		public ConfiguracionReserva(EntityTypeBuilder<Reserva> entityBuilder)
 		{
-			entityBuilder.HasKey(x => x.Id);
+			entityBuilder.HasKey(x => x.IdReserva);
 
 			entityBuilder.Property(x => x.RegistrarFecha).IsRequired();
 			entityBuilder.Property(x => x.CodigoReserva).IsRequired();
@@ -18,12 +18,12 @@ namespace Solix.Booking.Persistence.Configurations
 
 			//Relaciono con la tabla usuarios
 			entityBuilder.HasOne(x => x.usuario)
-				.WithMany(x => x.reservas)
+				.WithMany(x => x.reserva)
 				.HasForeignKey(x => x.IdUsuario);
 
 			//Relaciono con la tabla clientes 
 			entityBuilder.HasOne(x=>x.cliente)
-				.WithMany(x=>x.reservas)
+				.WithMany(x=>x.reserva)
 				.HasForeignKey(x=>x.IdCliente);
 
 		}

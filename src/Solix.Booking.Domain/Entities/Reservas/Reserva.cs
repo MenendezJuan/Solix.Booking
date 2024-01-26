@@ -1,11 +1,11 @@
-﻿using Solix.Booking.Domain.Entities.Base;
-using Solix.Booking.Domain.Entities.Clientes;
+﻿using Solix.Booking.Domain.Entities.Clientes;
 using Solix.Booking.Domain.Entities.Usuarios;
 
 namespace Solix.Booking.Domain.Entities.Reservas
 {
-    public class Reserva : EntidadBase
+	public class Reserva
 	{
+		public int IdReserva { get; set; }
 		public DateTime RegistrarFecha { get; set; }
 		public string CodigoReserva { get; set; }
 		public string TipoReserva { get; set; }

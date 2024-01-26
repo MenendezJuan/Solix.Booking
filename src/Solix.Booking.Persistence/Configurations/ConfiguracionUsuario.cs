@@ -9,7 +9,7 @@ namespace Solix.Booking.Persistence.Configurations
 		public ConfiguracionUsuario(EntityTypeBuilder<Usuario> entityBuilder)
 		{
 			//Lo marco como llave primaria
-			entityBuilder.HasKey(x => x.Id);
+			entityBuilder.HasKey(x => x.IdUsuario);
 
 			//Marco como propiedad y requerida
 			entityBuilder.Property(x => x.Nombre).IsRequired();
@@ -21,10 +21,10 @@ namespace Solix.Booking.Persistence.Configurations
 			entityBuilder.Property(x => x.Password).IsRequired();
 
 			//Digo que un usuario tiene muchas reservas y la FK
-			entityBuilder.HasMany(x => x.reservas)
-				.WithOne(x=>x.usuario)
+			entityBuilder.HasMany(x => x.reserva)
+				.WithOne(x => x.usuario)
 				//La que relaciona
-				.HasForeignKey(x=>x.IdUsuario);
+				.HasForeignKey(x => x.IdUsuario);
 
 		}
 	}
