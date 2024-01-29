@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Solix.Booking.Application.Database.Reservas.Queries.ObtenerTodasLasReservas
+﻿namespace Solix.Booking.Application.Database.Reservas.Queries.ObtenerTodasLasReservas
 {
-	internal interface IObtenerTodasLasReservasQuery
+	public interface IObtenerTodasLasReservasQuery
 	{
+		Task<List<ObtenerTodasLasReservasDto>> Ejecutar();
 	}
 }

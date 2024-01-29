@@ -4,7 +4,7 @@ using Solix.Booking.Domain.Entities.Reservas;
 
 namespace Solix.Booking.Application.Database.Reservas.Commands.CrearReserva
 {
-	public class CrearReservaCommand
+	public class CrearReservaCommand : ICrearReservaCommand
 	{
 		private readonly IDatabaseService _dataBaseService;
 		private readonly IMapper _mapper;
