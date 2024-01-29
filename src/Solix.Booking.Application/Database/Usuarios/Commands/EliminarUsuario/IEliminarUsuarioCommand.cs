@@ -2,5 +2,6 @@
 {
 	public interface IEliminarUsuarioCommand
 	{
+		Task<bool> Ejecutar(int IdUsuario);
 	}
 }
