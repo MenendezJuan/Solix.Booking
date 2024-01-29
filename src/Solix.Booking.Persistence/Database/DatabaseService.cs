@@ -4,7 +4,6 @@ using Solix.Booking.Domain.Entities.Clientes;
 using Solix.Booking.Domain.Entities.Reservas;
 using Solix.Booking.Domain.Entities.Usuarios;
 using Solix.Booking.Persistence.Configurations;
-using System.Reflection;
 
 namespace Solix.Booking.Persistence.Database
 {
@@ -35,12 +34,12 @@ namespace Solix.Booking.Persistence.Database
 			EntityConfiguration(modelBuilder);
 		}
 
-		private void EntityConfiguration(ModelBuilder modelBuilder) 
-			{
+		private void EntityConfiguration(ModelBuilder modelBuilder)
+		{
 			new ConfiguracionUsuario(modelBuilder.Entity<Usuario>());
 			new ConfiguracionCliente(modelBuilder.Entity<Cliente>());
 			new ConfiguracionReserva(modelBuilder.Entity<Reserva>());
-		} 
+		}
 
 
 	}

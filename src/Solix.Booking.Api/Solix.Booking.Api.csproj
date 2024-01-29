@@ -20,6 +20,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Solix.Booking.Common\Solix.Booking.Common.csproj" />
+    <ProjectReference Include="..\Solix.Booking.External\Solix.Booking.External.csproj" />
     <ProjectReference Include="..\Solix.Booking.Persistence\Solix.Booking.Persistence.csproj" />
   </ItemGroup>
 
