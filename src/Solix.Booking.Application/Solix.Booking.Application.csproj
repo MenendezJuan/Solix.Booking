@@ -16,8 +16,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Database\Clientes\Commands\" />
-    <Folder Include="Database\Clientes\Queries\" />
+    <Folder Include="Database\Clientes\Queries\ObtenerClientesPorId\" />
+    <Folder Include="Database\Clientes\Queries\ObtenerTodosLosClientes\" />
     <Folder Include="Database\Reservas\Commands\" />
     <Folder Include="Database\Reservas\Queries\" />
   </ItemGroup>

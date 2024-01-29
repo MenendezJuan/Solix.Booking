@@ -1,6 +1,9 @@
 ﻿using AutoMapper;
 using Microsoft.Extensions.DependencyInjection;
 using Solix.Booking.Application.Configuration;
+using Solix.Booking.Application.Database.Clientes.Commands.ActualizarCliente;
+using Solix.Booking.Application.Database.Clientes.Commands.CrearCliente;
+using Solix.Booking.Application.Database.Clientes.Commands.EliminarCliente;
 using Solix.Booking.Application.Database.Usuarios.Commands.ActualizarPassUsuario;
 using Solix.Booking.Application.Database.Usuarios.Commands.ActualizarUsuario;
 using Solix.Booking.Application.Database.Usuarios.Commands.CrearUsuario;
@@ -25,6 +28,7 @@ namespace Solix.Booking.Application
 			//Lo creo
 			services.AddSingleton(mapper.CreateMapper());
 			//Registro servicios
+			#region ServicioUsuario
 			services.AddTransient<ICrearUsuarioCommand, CrearUsuarioCommand>();
 			services.AddTransient<IActualizarUsuarioCommand, ActualizarUsuarioCommand>();
 			services.AddTransient<IEliminarUsuarioCommand, EliminarUsuarioCommand>();
@@ -32,6 +36,13 @@ namespace Solix.Booking.Application
 			services.AddTransient<IObtenerTodosLosUsuariosQuery, ObtenerTodosLosUsuariosQuery>();
 			services.AddTransient<IObtenerUsuarioPorIdQuery, ObtenerUsuarioPorIdQuery>();
 			services.AddTransient<IObtenerUsuarioPorNombreYContraseñaQuery ,ObtenerUsuarioPorNombreYContraseñaQuery>();
+			#endregion
+			#region ServicioCliente
+			services.AddTransient<ICrearClienteCommand, CrearClienteCommand>();
+			services.AddTransient<IActualizarClienteCommand, ActualizarClienteCommand>();
+			services.AddTransient<IEliminarClienteCommand, EliminarClienteCommand>();
+
+			#endregion
 			return services;
 		}
 	}
