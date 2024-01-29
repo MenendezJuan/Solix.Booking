@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Solix.Booking.Application.Database.Usuario.Commands.CreateUser;
+using Solix.Booking.Application.Database.Usuarios.Commands.ActualizarUsuario;
 using Solix.Booking.Domain.Entities.Usuarios;
 
 namespace Solix.Booking.Application.Configuration
@@ -10,6 +11,7 @@ namespace Solix.Booking.Application.Configuration
 		public MapperProfile()
 		{
 			CreateMap<Usuario,CrearUsuarioDto>().ReverseMap();
+			CreateMap<Usuario,ActualizarUsuarioDto>().ReverseMap();
 		}
 	}
 }

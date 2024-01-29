@@ -1,10 +1,11 @@
 ﻿using AutoMapper;
 using Solix.Booking.Application.Database.Usuario.Commands.CreateUser;
+using Solix.Booking.Application.Database.Usuarios.Commands.CrearUsuario;
 using Solix.Booking.Application.Interfaces;
 
 namespace Solix.Booking.Application.Database.Usuarios.Commands.CreateUser
 {
-	internal class CrearUsuarioCommand
+	public class CrearUsuarioCommand : ICrearUsuarioCommand
 	{
 		private readonly IDatabaseService _databaseService;
 		private readonly IMapper _mapper;
