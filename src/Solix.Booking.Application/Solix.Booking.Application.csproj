@@ -15,4 +15,12 @@
     <ProjectReference Include="..\Solix.Booking.Domain\Solix.Booking.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Database\Clientes\Commands\" />
+    <Folder Include="Database\Clientes\Queries\" />
+    <Folder Include="Database\Reservas\Commands\" />
+    <Folder Include="Database\Reservas\Queries\" />
+    <Folder Include="Database\Usuarios\Queries\" />
+  </ItemGroup>
+
 </Project>
