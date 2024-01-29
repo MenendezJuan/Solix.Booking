@@ -6,6 +6,9 @@ using Solix.Booking.Application.Database.Usuarios.Commands.ActualizarUsuario;
 using Solix.Booking.Application.Database.Usuarios.Commands.CrearUsuario;
 using Solix.Booking.Application.Database.Usuarios.Commands.CreateUser;
 using Solix.Booking.Application.Database.Usuarios.Commands.EliminarUsuario;
+using Solix.Booking.Application.Database.Usuarios.Queries.GetAllUser;
+using Solix.Booking.Application.Database.Usuarios.Queries.GetUserById;
+using Solix.Booking.Application.Database.Usuarios.Queries.GetUserByUsernameAndPassword;
 
 namespace Solix.Booking.Application
 {
@@ -21,10 +24,14 @@ namespace Solix.Booking.Application
 
 			//Lo creo
 			services.AddSingleton(mapper.CreateMapper());
+			//Registro servicios
 			services.AddTransient<ICrearUsuarioCommand, CrearUsuarioCommand>();
 			services.AddTransient<IActualizarUsuarioCommand, ActualizarUsuarioCommand>();
 			services.AddTransient<IEliminarUsuarioCommand, EliminarUsuarioCommand>();
 			services.AddTransient<IActualizarContraseñaUsuarioCommand, ActualizarContraseñaUsuarioCommand>();
+			services.AddTransient<IObtenerTodosLosUsuariosQuery, ObtenerTodosLosUsuariosQuery>();
+			services.AddTransient<IObtenerUsuarioPorIdQuery, ObtenerUsuarioPorIdQuery>();
+			services.AddTransient<IObtenerUsuarioPorNombreYContraseñaQuery ,ObtenerUsuarioPorNombreYContraseñaQuery>();
 			return services;
 		}
 	}

@@ -14,7 +14,8 @@ namespace Solix.Booking.Application.Database.Usuarios.Commands.EliminarUsuario
 
 		public async Task<bool> Ejecutar(int IdUsuario)
 		{	
-			var entity = await _databaseService.usuario.FirstOrDefaultAsync(x => x.IdUsuario == IdUsuario);
+			var entity = await _databaseService.usuario
+				.FirstOrDefaultAsync(x => x.IdUsuario == IdUsuario);
 			if (entity == null)
 			{
 				return false;
