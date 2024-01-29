@@ -2,6 +2,6 @@
 {
 	public interface IActualizarUsuarioCommand
 	{
-		Task<ActualizarUsuarioDto> Execute(ActualizarUsuarioDto modelo);
+		Task<ActualizarUsuarioDto> Ejecutar(ActualizarUsuarioDto modelo);
 	}
 }

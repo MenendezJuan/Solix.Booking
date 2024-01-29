@@ -20,7 +20,6 @@
     <Folder Include="Database\Clientes\Queries\" />
     <Folder Include="Database\Reservas\Commands\" />
     <Folder Include="Database\Reservas\Queries\" />
-    <Folder Include="Database\Usuarios\Queries\" />
   </ItemGroup>
 
 </Project>
