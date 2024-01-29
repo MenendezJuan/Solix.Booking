@@ -4,6 +4,13 @@ using Solix.Booking.Application.Configuration;
 using Solix.Booking.Application.Database.Clientes.Commands.ActualizarCliente;
 using Solix.Booking.Application.Database.Clientes.Commands.CrearCliente;
 using Solix.Booking.Application.Database.Clientes.Commands.EliminarCliente;
+using Solix.Booking.Application.Database.Clientes.Queries.ObtenerClientesPorDocumento;
+using Solix.Booking.Application.Database.Clientes.Queries.ObtenerClientesPorId;
+using Solix.Booking.Application.Database.Clientes.Queries.ObtenerTodosLosClientes;
+using Solix.Booking.Application.Database.Reservas.Commands.CrearReserva;
+using Solix.Booking.Application.Database.Reservas.Queries.ObtenerReservasPorNroDocumento;
+using Solix.Booking.Application.Database.Reservas.Queries.ObtenerReservasPorTipo;
+using Solix.Booking.Application.Database.Reservas.Queries.ObtenerTodasLasReservas;
 using Solix.Booking.Application.Database.Usuarios.Commands.ActualizarPassUsuario;
 using Solix.Booking.Application.Database.Usuarios.Commands.ActualizarUsuario;
 using Solix.Booking.Application.Database.Usuarios.Commands.CrearUsuario;
@@ -41,6 +48,17 @@ namespace Solix.Booking.Application
 			services.AddTransient<ICrearClienteCommand, CrearClienteCommand>();
 			services.AddTransient<IActualizarClienteCommand, ActualizarClienteCommand>();
 			services.AddTransient<IEliminarClienteCommand, EliminarClienteCommand>();
+			services.AddTransient<IObtenerTodosLosClientesQuery, ObtenerTodosLosClientesQuery>();
+			services.AddTransient<IObtenerClientePorIdQuery, ObtenerClientePorIdQuery>();
+			services.AddTransient<IObtenerClientePorDocumentoQuery, ObtenerClientePorDocumentoQuery>();
+
+			#endregion
+
+			#region ServicioReserva
+			services.AddTransient<ICrearReservaCommand, CrearReservaCommand>();
+			services.AddTransient<IObtenerTodasLasReservasQuery, ObtenerTodasLasReservasQuery>();
+			services.AddTransient<IObtenerReservasPorNroDocumentoQuery, ObtenerReservasPorNroDocumentoQuery>();
+			services.AddTransient<IObtenerReservasPorTipoQuery, ObtenerReservasPorTipoQuery>();
 
 			#endregion
 			return services;

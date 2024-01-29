@@ -9,17 +9,17 @@ namespace Solix.Booking.Application.Database.Usuarios.Queries.GetAllUser
 		private readonly IDatabaseService _databaseService;
 		private readonly IMapper _mapper;
 
-        public ObtenerTodosLosUsuariosQuery(IDatabaseService databaseService, IMapper mapper)
-        {
-            _databaseService = databaseService; 
-            _mapper = mapper;
-        }
+		public ObtenerTodosLosUsuariosQuery(IDatabaseService databaseService, IMapper mapper)
+		{
+			_databaseService = databaseService; 
+			_mapper = mapper;
+		}
 
-        public async Task<List<ObtenerTodosLosUsuariosDto>> Ejecutar()
-        {
-            var ListEntity = await _databaseService.usuario.ToListAsync();
-            //Convierto toda la lista de entidades de la DB, en el modelo que tengo
-            return _mapper.Map<List<ObtenerTodosLosUsuariosDto>>(ListEntity);   
-        }
-    }
+		public async Task<List<ObtenerTodosLosUsuariosDto>> Ejecutar()
+		{
+			var ListEntity = await _databaseService.usuario.ToListAsync();
+			//Convierto toda la lista de entidades de la DB, en el modelo que tengo
+			return _mapper.Map<List<ObtenerTodosLosUsuariosDto>>(ListEntity);   
+		}
+	}
 }

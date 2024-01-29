@@ -1,12 +1,17 @@
 ﻿using AutoMapper;
 using Solix.Booking.Application.Database.Clientes.Commands.ActualizarCliente;
 using Solix.Booking.Application.Database.Clientes.Commands.CrearCliente;
+using Solix.Booking.Application.Database.Clientes.Queries.ObtenerClientesPorDocumento;
+using Solix.Booking.Application.Database.Clientes.Queries.ObtenerClientesPorId;
+using Solix.Booking.Application.Database.Clientes.Queries.ObtenerTodosLosClientes;
+using Solix.Booking.Application.Database.Reservas.Commands.CrearReserva;
 using Solix.Booking.Application.Database.Usuario.Commands.CreateUser;
 using Solix.Booking.Application.Database.Usuarios.Commands.ActualizarUsuario;
 using Solix.Booking.Application.Database.Usuarios.Queries.GetAllUser;
 using Solix.Booking.Application.Database.Usuarios.Queries.GetUserById;
 using Solix.Booking.Application.Database.Usuarios.Queries.GetUserByUsernameAndPassword;
 using Solix.Booking.Domain.Entities.Clientes;
+using Solix.Booking.Domain.Entities.Reservas;
 using Solix.Booking.Domain.Entities.Usuarios;
 
 namespace Solix.Booking.Application.Configuration
@@ -26,6 +31,12 @@ namespace Solix.Booking.Application.Configuration
 			#region Cliente
 			CreateMap<Cliente,CrearClienteDto>().ReverseMap();
 			CreateMap<Cliente, ActualizarClienteDto>().ReverseMap();
+			CreateMap<Cliente, ObtenerTodosLosClientesDto>().ReverseMap();
+			CreateMap<Cliente, ObtenerClientePorIdDto>().ReverseMap();
+			CreateMap<Cliente, ObtenerClientePorDocumentoDto>().ReverseMap();
+			#endregion
+			#region Reserva
+			CreateMap<Reserva,CrearReservaDto>().ReverseMap();
 			#endregion
 		}
 	}

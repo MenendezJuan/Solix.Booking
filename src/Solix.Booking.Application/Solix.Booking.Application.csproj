@@ -15,11 +15,4 @@
     <ProjectReference Include="..\Solix.Booking.Domain\Solix.Booking.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Database\Clientes\Queries\ObtenerClientesPorId\" />
-    <Folder Include="Database\Clientes\Queries\ObtenerTodosLosClientes\" />
-    <Folder Include="Database\Reservas\Commands\" />
-    <Folder Include="Database\Reservas\Queries\" />
-  </ItemGroup>
-
 </Project>
