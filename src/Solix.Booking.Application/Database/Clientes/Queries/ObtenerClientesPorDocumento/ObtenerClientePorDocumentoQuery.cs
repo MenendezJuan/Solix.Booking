@@ -15,11 +15,11 @@ namespace Solix.Booking.Application.Database.Clientes.Queries.ObtenerClientesPor
 			_mapper = mapper;
 		}
 
-		public async Task<ObtenerClientePorDocumentoQuery> Ejecutar(string documento)
+		public async Task<ObtenerClientePorDocumentoDto> Ejecutar(string documento)
 		{
 			var entity = await _databaseService.cliente
 				.FirstOrDefaultAsync(x => x.Documento == documento);
-			return _mapper.Map<ObtenerClientePorDocumentoQuery>(entity);
+			return _mapper.Map<ObtenerClientePorDocumentoDto>(entity);
 		}
 	}
 }

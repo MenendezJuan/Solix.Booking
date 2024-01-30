@@ -2,6 +2,6 @@
 {
 	public interface IObtenerClientePorDocumentoQuery
 	{ 
-		Task<ObtenerClientePorDocumentoQuery> Ejecutar(string documento);
+		Task<ObtenerClientePorDocumentoDto> Ejecutar(string documento);
 	}
 }

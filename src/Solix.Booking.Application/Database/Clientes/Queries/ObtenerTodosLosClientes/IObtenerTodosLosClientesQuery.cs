@@ -2,5 +2,6 @@
 {
 	public interface IObtenerTodosLosClientesQuery
 	{
+		Task<List<ObtenerTodosLosClientesDto>> Ejecutar();
 	}
 }

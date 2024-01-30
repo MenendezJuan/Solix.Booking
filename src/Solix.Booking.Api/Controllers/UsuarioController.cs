@@ -7,12 +7,14 @@ using Solix.Booking.Application.Database.Usuarios.Commands.EliminarUsuario;
 using Solix.Booking.Application.Database.Usuarios.Queries.GetAllUser;
 using Solix.Booking.Application.Database.Usuarios.Queries.GetUserById;
 using Solix.Booking.Application.Database.Usuarios.Queries.GetUserByUsernameAndPassword;
+using Solix.Booking.Application.Exceptions;
 using Solix.Booking.Application.Features;
 
 namespace Solix.Booking.Api.Controllers
 {
 	[Route("api/v1/usuario")]
 	[ApiController]
+	[TypeFilter(typeof(ExceptionManager))]
 	public class UsuarioController : ControllerBase
 	{
 		[HttpPost("create")]
