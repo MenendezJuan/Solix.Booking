@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using FluentValidation;
+using Microsoft.AspNetCore.Mvc;
 using Solix.Booking.Application.Database.Clientes.Commands.ActualizarCliente;
 using Solix.Booking.Application.Database.Clientes.Commands.CrearCliente;
 using Solix.Booking.Application.Database.Clientes.Commands.EliminarCliente;
@@ -7,6 +8,7 @@ using Solix.Booking.Application.Database.Clientes.Queries.ObtenerClientesPorId;
 using Solix.Booking.Application.Database.Clientes.Queries.ObtenerTodosLosClientes;
 using Solix.Booking.Application.Exceptions;
 using Solix.Booking.Application.Features;
+using System.ComponentModel.DataAnnotations;
 
 namespace Solix.Booking.Api.Controllers
 {
@@ -18,16 +20,31 @@ namespace Solix.Booking.Api.Controllers
 	{
 
 		[HttpPost("create")]
-		public async Task<IActionResult> CrearCliente([FromBody] CrearClienteDto clienteDto, [FromServices]ICrearClienteCommand crearClienteCommand)
+		public async Task<IActionResult> CrearCliente([FromBody] CrearClienteDto clienteDto, [FromServices]ICrearClienteCommand crearClienteCommand, [FromServices] IValidator<CrearClienteDto> validator)
 		{
+			var validate = await validator.ValidateAsync(clienteDto);
+
+			//Solo ingresa cuando sea false
+			if (!validate.IsValid)
+			{
+				return StatusCode(StatusCodes.Status400BadRequest, ResponseApiService.Response(StatusCodes.Status400BadRequest, validate.Errors));
+			}
+
 			var data = await crearClienteCommand.Ejecutar(clienteDto);
 
 			return StatusCode(StatusCodes.Status201Created, ResponseApiService.Response(StatusCodes.Status201Created, data));
 		}
 
 		[HttpPut("update")]
-		public async Task<IActionResult> ActualizarCliente([FromBody] ActualizarClienteDto clienteDto, [FromServices] IActualizarClienteCommand actualizarClienteCommand)
+		public async Task<IActionResult> ActualizarCliente([FromBody] ActualizarClienteDto clienteDto, [FromServices] IActualizarClienteCommand actualizarClienteCommand, [FromServices] IValidator<ActualizarClienteDto> validator)
 		{
+			var validate = await validator.ValidateAsync(clienteDto);
+
+			//Solo ingresa cuando sea false
+			if (!validate.IsValid)
+			{
+				return StatusCode(StatusCodes.Status400BadRequest, ResponseApiService.Response(StatusCodes.Status400BadRequest, validate.Errors));
+			}
 			var data = await actualizarClienteCommand.Ejecutar(clienteDto);
 			return StatusCode(StatusCodes.Status200OK, ResponseApiService.Response(StatusCodes.Status200OK, data, "Cliente actualizado"));
 		}
