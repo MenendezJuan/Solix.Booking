@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using FluentValidation;
+using Microsoft.AspNetCore.Mvc;
 using Solix.Booking.Application.Database.Reservas.Commands.CrearReserva;
 using Solix.Booking.Application.Database.Reservas.Queries.ObtenerReservasPorNroDocumento;
 using Solix.Booking.Application.Database.Reservas.Queries.ObtenerReservasPorTipo;
@@ -15,8 +16,13 @@ namespace Solix.Booking.Api.Controllers
 	public class ReservaController : ControllerBase
 	{
 		[HttpPost("create")]
-		public async Task<IActionResult> CrearReserva([FromBody] CrearReservaDto reservaDto, [FromServices] ICrearReservaCommand crearReservaCommand)
+		public async Task<IActionResult> CrearReserva([FromBody] CrearReservaDto reservaDto, [FromServices] ICrearReservaCommand crearReservaCommand, [FromServices] IValidator<CrearReservaDto> validator)
 		{
+			var validate = await validator.ValidateAsync(reservaDto);
+
+			if(!validate.IsValid)
+				return StatusCode(StatusCodes.Status400BadRequest, ResponseApiService.Response(StatusCodes.Status400BadRequest, validate.Errors));
+
 			var data = await crearReservaCommand.Ejecutar(reservaDto);
 
 			return StatusCode(StatusCodes.Status200OK, ResponseApiService.Response(StatusCodes.Status200OK, data, "Se creo la reserva correctamente"));

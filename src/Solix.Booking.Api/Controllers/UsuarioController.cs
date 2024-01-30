@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using FluentValidation;
+using Microsoft.AspNetCore.Mvc;
 using Solix.Booking.Application.Database.Usuario.Commands.CreateUser;
 using Solix.Booking.Application.Database.Usuarios.Commands.ActualizarPassUsuario;
 using Solix.Booking.Application.Database.Usuarios.Commands.ActualizarUsuario;
@@ -9,6 +10,7 @@ using Solix.Booking.Application.Database.Usuarios.Queries.GetUserById;
 using Solix.Booking.Application.Database.Usuarios.Queries.GetUserByUsernameAndPassword;
 using Solix.Booking.Application.Exceptions;
 using Solix.Booking.Application.Features;
+using System.ComponentModel.DataAnnotations;
 
 namespace Solix.Booking.Api.Controllers
 {
@@ -18,8 +20,16 @@ namespace Solix.Booking.Api.Controllers
 	public class UsuarioController : ControllerBase
 	{
 		[HttpPost("create")]
-		public async Task<IActionResult> CrearUsuario([FromBody] CrearUsuarioDto crearUsuarioDto, [FromServices] ICrearUsuarioCommand crearUsuarioCommand)
+		public async Task<IActionResult> CrearUsuario([FromBody] CrearUsuarioDto crearUsuarioDto, [FromServices] ICrearUsuarioCommand crearUsuarioCommand,
+			[FromServices] IValidator<CrearUsuarioDto> validator)
 		{
+
+			var validate = await validator.ValidateAsync(crearUsuarioDto);
+
+			// Si al menos una de las reglas de validación no se cumple, IsValid será false.
+			// Al agregar el "!" (NOT), entraría al bloque de código si IsValid es false, indicando un error de validación.
+			if (!validate.IsValid)
+				return StatusCode(StatusCodes.Status400BadRequest, ResponseApiService.Response(StatusCodes.Status400BadRequest, validate.Errors));
 
 			var data = await crearUsuarioCommand.Ejecutar(crearUsuarioDto);
 
@@ -27,15 +37,25 @@ namespace Solix.Booking.Api.Controllers
 		}
 
 		[HttpPut("update")]
-		public async Task<IActionResult> ActualizarUsuario([FromBody] ActualizarUsuarioDto actualizarUsuarioDto, [FromServices] IActualizarUsuarioCommand actualizarUsuarioCommand)
+		public async Task<IActionResult> ActualizarUsuario([FromBody] ActualizarUsuarioDto actualizarUsuarioDto, [FromServices] IActualizarUsuarioCommand actualizarUsuarioCommand, [FromServices] IValidator<ActualizarUsuarioDto> validator)
 		{
+			var validate = await validator.ValidateAsync(actualizarUsuarioDto);
+
+			if (!validate.IsValid)
+				return StatusCode(StatusCodes.Status400BadRequest, ResponseApiService.Response(StatusCodes.Status400BadRequest, validate.Errors));
+
 			var data = await actualizarUsuarioCommand.Ejecutar(actualizarUsuarioDto);
 			return StatusCode(StatusCodes.Status200OK, ResponseApiService.Response(StatusCodes.Status200OK, data, "Se actualizo exitosamente"));
 		}
 
 		[HttpPut("update-password")]
-		public async Task<IActionResult> ActualizarContraseña([FromBody] ActualizarContraseñaUsuarioDto actualizarContraseñaUsuarioDto, [FromServices] IActualizarContraseñaUsuarioCommand actualizarContraseñaUsuarioCommand)
+		public async Task<IActionResult> ActualizarContraseña([FromBody] ActualizarContraseñaUsuarioDto actualizarContraseñaUsuarioDto, [FromServices] IActualizarContraseñaUsuarioCommand actualizarContraseñaUsuarioCommand, [FromServices] IValidator<ActualizarContraseñaUsuarioDto> validator)
 		{
+			var validate = await validator.ValidateAsync(actualizarContraseñaUsuarioDto);
+
+			if (!validate.IsValid)
+				return StatusCode(StatusCodes.Status400BadRequest, ResponseApiService.Response(StatusCodes.Status400BadRequest, validate.Errors));
+
 			var data = await actualizarContraseñaUsuarioCommand.Ejecutar(actualizarContraseñaUsuarioDto);
 			return StatusCode(StatusCodes.Status200OK, ResponseApiService.Response(StatusCodes.Status200OK, data, "Se actualizo la password exitosamente"));
 		}
@@ -94,8 +114,13 @@ namespace Solix.Booking.Api.Controllers
 		}
 
 		[HttpGet("get-by-username-pass/{nombreUsuario}/{password}")]
-		public async Task<IActionResult> ObtenerPorNombreUsuarioyPass(string nombreUsuario, string password, [FromServices] IObtenerUsuarioPorNombreYContraseñaQuery porNombreYContraseñaQuery)
+		public async Task<IActionResult> ObtenerPorNombreUsuarioyPass(string nombreUsuario, string password, [FromServices] IObtenerUsuarioPorNombreYContraseñaQuery porNombreYContraseñaQuery, [FromServices] IValidator<(string , string)> validator)
 		{
+			var validate = await validator.ValidateAsync((nombreUsuario, password));
+
+			if (!validate.IsValid)
+				return StatusCode(StatusCodes.Status400BadRequest, ResponseApiService.Response(StatusCodes.Status400BadRequest, validate.Errors));
+
 			var data = await porNombreYContraseñaQuery.Ejecutar(nombreUsuario, password);
 
 			if (data == null)

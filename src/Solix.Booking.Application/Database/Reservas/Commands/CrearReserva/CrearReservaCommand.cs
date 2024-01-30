@@ -11,18 +11,18 @@ namespace Solix.Booking.Application.Database.Reservas.Commands.CrearReserva
 		private readonly IDatabaseService _dataBaseService;
 		private readonly IMapper _mapper;
 
-        public CrearReservaCommand(IDatabaseService databaseService, IMapper mapper)
-        {
-            _dataBaseService = databaseService;
-            _mapper = mapper;
-        }
+		public CrearReservaCommand(IDatabaseService databaseService, IMapper mapper)
+		{
+			_dataBaseService = databaseService;
+			_mapper = mapper;
+		}
 
-        public async Task<CrearReservaDto> Ejecutar(CrearReservaDto modelo)
-        {
+		public async Task<CrearReservaDto> Ejecutar(CrearReservaDto modelo)
+		{
 				var entity = _mapper.Map<Reserva>(modelo);
 				await _dataBaseService.reserva.AddAsync(entity);
 				await _dataBaseService.SaveAsync();
 				return modelo;
 		}
-    }
+	}
 }
