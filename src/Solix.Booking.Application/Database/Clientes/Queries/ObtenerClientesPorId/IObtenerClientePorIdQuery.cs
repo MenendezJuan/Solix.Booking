@@ -2,6 +2,6 @@
 {
 	public interface IObtenerClientePorIdQuery
 	{
-		Task<ObtenerClientePorIdQuery> Ejecutar(int IdCliente);
+		Task<ObtenerClientePorIdDto> Ejecutar(int IdCliente);
 	}
 }

@@ -15,11 +15,11 @@ namespace Solix.Booking.Application.Database.Clientes.Queries.ObtenerClientesPor
 			_mapper = mapper;
 		}
 
-		public async Task<ObtenerClientePorIdQuery> Ejecutar(int IdCliente)
+		public async Task<ObtenerClientePorIdDto> Ejecutar(int IdCliente)
 		{
 			var entity = await _databaseService.cliente
 				.FirstOrDefaultAsync(x => x.IdCliente == IdCliente);
-			return _mapper.Map<ObtenerClientePorIdQuery>(entity);
+			return _mapper.Map<ObtenerClientePorIdDto>(entity);
 		}
 	}
 }
