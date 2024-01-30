@@ -29,14 +29,14 @@ namespace Solix.Booking.Application.Configuration
 			CreateMap<Usuario,ObtenerUsuarioPorNombreYContraseñaDto>().ReverseMap();
 			#endregion
 			#region Cliente
-			CreateMap<Cliente,CrearClienteDto>().ReverseMap();
+			CreateMap<Cliente, CrearClienteDto>().ReverseMap();
 			CreateMap<Cliente, ActualizarClienteDto>().ReverseMap();
 			CreateMap<Cliente, ObtenerTodosLosClientesDto>().ReverseMap();
 			CreateMap<Cliente, ObtenerClientePorIdDto>().ReverseMap();
 			CreateMap<Cliente, ObtenerClientePorDocumentoDto>().ReverseMap();
 			#endregion
 			#region Reserva
-			CreateMap<Reserva,CrearReservaDto>().ReverseMap();
+			CreateMap<Reserva, CrearReservaDto>().ReverseMap();	
 			#endregion
 		}
 	}
