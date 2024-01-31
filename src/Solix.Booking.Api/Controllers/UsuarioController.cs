@@ -10,11 +10,16 @@ using Solix.Booking.Application.Database.Usuarios.Queries.GetAllUser;
 using Solix.Booking.Application.Database.Usuarios.Queries.GetUserById;
 using Solix.Booking.Application.Database.Usuarios.Queries.GetUserByUsernameAndPassword;
 using Solix.Booking.Application.Exceptions;
+using Solix.Booking.Application.External.ApplicationInsights;
 using Solix.Booking.Application.External.GetTokenJWT;
 using Solix.Booking.Application.Features;
+using Solix.Booking.Common.Constants;
+using Solix.Booking.Domain.Models.ApplicationInsights;
 
 namespace Solix.Booking.Api.Controllers
 {
+//Desactivo los warning que tira al solicitar comentarios en los metodos
+#pragma warning disable
 	//[AllowAnonymous]
 	[Authorize]
 	[Route("api/v1/usuario")]
@@ -22,6 +27,12 @@ namespace Solix.Booking.Api.Controllers
 	[TypeFilter(typeof(ExceptionManager))]
 	public class UsuarioController : ControllerBase
 	{
+		private readonly IInsertApplicationInsightsService _insertApplicationInsightsService;
+		public UsuarioController(IInsertApplicationInsightsService insertApplicationInsightsService)
+		{
+			_insertApplicationInsightsService = insertApplicationInsightsService;	
+		}
+
 		[HttpPost("create")]
 		public async Task<IActionResult> CrearUsuario([FromBody] CrearUsuarioDto crearUsuarioDto, [FromServices] ICrearUsuarioCommand crearUsuarioCommand,
 			[FromServices] IValidator<CrearUsuarioDto> validator)
@@ -87,6 +98,15 @@ namespace Solix.Booking.Api.Controllers
 		[HttpGet("get-all")]
 		public async Task<IActionResult> ObtenerTodos([FromServices] IObtenerTodosLosUsuariosQuery obtenerTodosLosUsuarios)
 		{
+			var metric = new InsertApplicationInsightsModel(
+			ApplicationInsightsConstants.METRIC_TYPE_API_CALL,
+			EntitiesConstants.USUARIO,
+			//Paso todo el detalle de la excepcion a un string
+			"get-all");
+
+
+			_insertApplicationInsightsService.Ejecutar(metric);
+
 			//Dentro del metodo invoco el servicio y guardo el resultado en data
 			var data = await obtenerTodosLosUsuarios.Ejecutar();
 			if (data == null || data.Count == 0)
@@ -99,6 +119,15 @@ namespace Solix.Booking.Api.Controllers
 		[HttpGet("get-by-id/{IdUsuario}")]
 		public async Task<IActionResult> ObtenerUsuarioPorId(int IdUsuario, [FromServices] IObtenerUsuarioPorIdQuery obtenerUsuarioPorId)
 		{
+			var metric = new InsertApplicationInsightsModel(
+			ApplicationInsightsConstants.METRIC_TYPE_API_CALL,
+			EntitiesConstants.USUARIO,
+			//Paso todo el detalle de la excepcion a un string
+			"get-by-id");
+
+
+			_insertApplicationInsightsService.Ejecutar(metric);
+
 			if (IdUsuario == 0)
 				return StatusCode(StatusCodes.Status400BadRequest, ResponseApiService.Response(StatusCodes.Status400BadRequest));
 
@@ -116,6 +145,15 @@ namespace Solix.Booking.Api.Controllers
 		public async Task<IActionResult> ObtenerPorNombreUsuarioyPass(string nombreUsuario, string password, [FromServices] IObtenerUsuarioPorNombreYContraseñaQuery porNombreYContraseñaQuery, [FromServices] IValidator<(string, string)> validator,
 			[FromServices] IGetTokenJWTService getTokenJWT)
 		{
+				var metric = new InsertApplicationInsightsModel(
+					ApplicationInsightsConstants.METRIC_TYPE_API_CALL,
+					EntitiesConstants.USUARIO,
+					//Paso todo el detalle de la excepcion a un string
+					"get-by-username-pass");
+
+
+			_insertApplicationInsightsService.Ejecutar(metric);
+
 			var validate = await validator.ValidateAsync((nombreUsuario, password));
 
 			if (!validate.IsValid)

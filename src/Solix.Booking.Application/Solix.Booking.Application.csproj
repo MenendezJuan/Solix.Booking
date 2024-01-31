@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Solix.Booking.Common\Solix.Booking.Common.csproj" />
     <ProjectReference Include="..\Solix.Booking.Domain\Solix.Booking.Domain.csproj" />
   </ItemGroup>
 

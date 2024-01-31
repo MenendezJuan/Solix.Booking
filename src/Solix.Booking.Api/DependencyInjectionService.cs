@@ -46,6 +46,9 @@ namespace Solix.Booking.Api
 				//Al combinar dos rutas hago el Path Combine
 				options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, fileName));
 			});
+
+
+
 			return services;
 		}
 	}

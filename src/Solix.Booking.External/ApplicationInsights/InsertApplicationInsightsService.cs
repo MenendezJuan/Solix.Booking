@@ -13,7 +13,7 @@ namespace Solix.Booking.External.ApplicationInsights
 
 		public InsertApplicationInsightsService(IConfiguration configuration)
 		{
-			_configuration = configuration;
+			_configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
 		}
 
 		//Retorno T o F, si se ejecuto correctamente o no
@@ -23,7 +23,9 @@ namespace Solix.Booking.External.ApplicationInsights
 				throw new ArgumentNullException(nameof(metric));
 
 			TelemetryConfiguration config = new TelemetryConfiguration();
-			config.ConnectionString = _configuration["ApplicationInsights"];
+				//Le digo que dentro de Application insights acceda a la InstrumetationKey que es la Connection string
+				config.ConnectionString = _configuration["ApplicationInsights:InstrumentationKey"];
+
 			var _telemetryCliente = new TelemetryClient(config);
 
 			//Creo el diccionario para pasar en el parametro

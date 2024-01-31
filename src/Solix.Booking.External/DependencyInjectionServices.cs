@@ -3,8 +3,10 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using Solix.Booking.Application.External.ApplicationInsights;
 using Solix.Booking.Application.External.GetTokenJWT;
 using Solix.Booking.External.AddJWT;
+using Solix.Booking.External.ApplicationInsights;
 using System.Text;
 
 namespace Solix.Booking.External
@@ -31,13 +33,20 @@ namespace Solix.Booking.External
 				};
 			});
 
+
+
 			services.AddApplicationInsightsTelemetry(new ApplicationInsightsServiceOptions
 			{
 				//Registramos el application insight
 				ConnectionString = configuration["ApplicationInsights"]
 			});
 
+
+			services.AddSingleton<IInsertApplicationInsightsService, InsertApplicationInsightsService>();
+
 			return services;
 		}
+
+
 	}
 }
