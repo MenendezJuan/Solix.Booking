@@ -15,6 +15,32 @@ namespace Solix.Booking.Api
 					Description = "Administracion de APIs para Booking APP"
 
 			});
+				//Integrar token de autorizacion con swagger
+				options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+				{
+					In = ParameterLocation.Header,
+					Description = "Ingrese un token valido",
+					Name = "Authorization",
+					Type = SecuritySchemeType.Http, 
+					BearerFormat = "JWT",
+					Scheme = "Bearer"
+				});
+
+				//Lo que necesitan las APIs para ejecutarse correctamente
+				options.AddSecurityRequirement(new OpenApiSecurityRequirement
+				{
+					{
+						new OpenApiSecurityScheme
+						{
+							Reference = new OpenApiReference
+							{
+								Type = ReferenceType.SecurityScheme,
+								Id = "Bearer"
+							}
+						},
+						new string[]{}
+					}
+				});
 
 				var fileName = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
 				//Al combinar dos rutas hago el Path Combine
