@@ -22,22 +22,30 @@ namespace Solix.Booking.Application.Configuration
 		public MapperProfile()
 		{
 			#region Usuario
-			CreateMap<Usuario,CrearUsuarioDto>().ReverseMap();
-			CreateMap<Usuario,ActualizarUsuarioDto>().ReverseMap();
-			CreateMap<Usuario,ObtenerTodosLosUsuariosDto>().ReverseMap();
-			CreateMap<Usuario,ObtenerUsuarioPorIdDto>().ReverseMap();
-			CreateMap<Usuario,ObtenerUsuarioPorNombreYContraseñaDto>().ReverseMap();
-			#endregion
+
+			CreateMap<Usuario, CrearUsuarioDto>().ReverseMap();
+			CreateMap<Usuario, ActualizarUsuarioDto>().ReverseMap();
+			CreateMap<Usuario, ObtenerTodosLosUsuariosDto>().ReverseMap();
+			CreateMap<Usuario, ObtenerUsuarioPorIdDto>().ReverseMap();
+			CreateMap<Usuario, ObtenerUsuarioPorNombreYContraseñaDto>().ReverseMap();
+
+			#endregion Usuario
+
 			#region Cliente
+
 			CreateMap<Cliente, CrearClienteDto>().ReverseMap();
 			CreateMap<Cliente, ActualizarClienteDto>().ReverseMap();
 			CreateMap<Cliente, ObtenerTodosLosClientesDto>().ReverseMap();
 			CreateMap<Cliente, ObtenerClientePorIdDto>().ReverseMap();
 			CreateMap<Cliente, ObtenerClientePorDocumentoDto>().ReverseMap();
-			#endregion
+
+			#endregion Cliente
+
 			#region Reserva
-			CreateMap<Reserva, CrearReservaDto>().ReverseMap();	
-			#endregion
+
+			CreateMap<Reserva, CrearReservaDto>().ReverseMap();
+
+			#endregion Reserva
 		}
 	}
 }

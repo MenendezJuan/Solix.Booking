@@ -9,16 +9,16 @@ namespace Solix.Booking.Application.Database.Clientes.Queries.ObtenerTodosLosCli
 		private readonly IDatabaseService _databaseService;
 		private readonly IMapper _mapper;
 
-        public ObtenerTodosLosClientesQuery(IDatabaseService databaseService, IMapper mapper)
-        {
-            _databaseService = databaseService;
-            _mapper = mapper;
-        }
+		public ObtenerTodosLosClientesQuery(IDatabaseService databaseService, IMapper mapper)
+		{
+			_databaseService = databaseService;
+			_mapper = mapper;
+		}
 
-        public async Task<List<ObtenerTodosLosClientesDto>> Ejecutar()
-        {
-            var listEntity = await _databaseService.cliente.ToListAsync();
-            return _mapper.Map<List<ObtenerTodosLosClientesDto>>(listEntity);
-        }
-    }
+		public async Task<List<ObtenerTodosLosClientesDto>> Ejecutar()
+		{
+			var listEntity = await _databaseService.cliente.ToListAsync();
+			return _mapper.Map<List<ObtenerTodosLosClientesDto>>(listEntity);
+		}
+	}
 }

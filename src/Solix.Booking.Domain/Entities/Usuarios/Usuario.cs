@@ -8,6 +8,7 @@ namespace Solix.Booking.Domain.Entities.Usuarios
 		{
 			reserva = new HashSet<Reserva>();
 		}
+
 		public int IdUsuario { get; set; }
 		public string Nombre { get; set; }
 		public string Apellido { get; set; }

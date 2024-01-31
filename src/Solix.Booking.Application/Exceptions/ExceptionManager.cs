@@ -10,7 +10,7 @@ namespace Solix.Booking.Application.Exceptions
 		public void OnException(ExceptionContext context)
 		{
 			context.Result = new ObjectResult(ResponseApiService.Response(StatusCodes.Status500InternalServerError,
-				context.Exception.Message,null));
+				context.Exception.Message, null));
 		}
 	}
 }

@@ -7,6 +7,7 @@
 		public string Apellido { get; set; }
 		public string NombreUsuario { get; set; }
 		public string Password { get; set; }
+
 		//Agrego el token
 		public string Token { get; set; }
 	}

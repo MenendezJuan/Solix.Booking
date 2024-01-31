@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using Solix.Booking.Application.Interfaces;
-using Solix.Booking.Domain.Entities.Usuarios;
 
 namespace Solix.Booking.Application.Database.Usuarios.Commands.ActualizarUsuario
 {

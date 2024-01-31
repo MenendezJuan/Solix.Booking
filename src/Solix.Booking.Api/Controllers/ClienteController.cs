@@ -8,19 +8,16 @@ using Solix.Booking.Application.Database.Clientes.Queries.ObtenerClientesPorId;
 using Solix.Booking.Application.Database.Clientes.Queries.ObtenerTodosLosClientes;
 using Solix.Booking.Application.Exceptions;
 using Solix.Booking.Application.Features;
-using System.ComponentModel.DataAnnotations;
 
 namespace Solix.Booking.Api.Controllers
 {
 	[Route("api/v1/cliente")]
 	[ApiController]
 	[TypeFilter(typeof(ExceptionManager))]
-
 	public class ClienteController : ControllerBase
 	{
-
 		[HttpPost("create")]
-		public async Task<IActionResult> CrearCliente([FromBody] CrearClienteDto clienteDto, [FromServices]ICrearClienteCommand crearClienteCommand, [FromServices] IValidator<CrearClienteDto> validator)
+		public async Task<IActionResult> CrearCliente([FromBody] CrearClienteDto clienteDto, [FromServices] ICrearClienteCommand crearClienteCommand, [FromServices] IValidator<CrearClienteDto> validator)
 		{
 			var validate = await validator.ValidateAsync(clienteDto);
 
@@ -52,7 +49,7 @@ namespace Solix.Booking.Api.Controllers
 		[HttpDelete("delete/{IdCliente}")]
 		public async Task<IActionResult> EliminarCliente(int IdCliente, [FromServices] IEliminarClienteCommand eliminarClienteCommand)
 		{
-			if(IdCliente == 0)
+			if (IdCliente == 0)
 				return StatusCode(StatusCodes.Status400BadRequest, ResponseApiService.Response(StatusCodes.Status400BadRequest));
 
 			var data = await eliminarClienteCommand.Ejecutar(IdCliente);
@@ -60,7 +57,7 @@ namespace Solix.Booking.Api.Controllers
 			if (!data)
 				return StatusCode(StatusCodes.Status404NotFound, ResponseApiService.Response(StatusCodes.Status404NotFound));
 
-			return StatusCode(StatusCodes.Status200OK,ResponseApiService.Response(StatusCodes.Status200OK,data, "El cliente fue eliminado correctamente"));
+			return StatusCode(StatusCodes.Status200OK, ResponseApiService.Response(StatusCodes.Status200OK, data, "El cliente fue eliminado correctamente"));
 		}
 
 		[HttpGet("get-all")]
@@ -68,7 +65,7 @@ namespace Solix.Booking.Api.Controllers
 		{
 			var data = await clientesQuery.Ejecutar();
 
-			if(data==null || data.Count == 0)
+			if (data == null || data.Count == 0)
 			{
 				return StatusCode(StatusCodes.Status404NotFound, ResponseApiService.Response(StatusCodes.Status404NotFound));
 			}
@@ -76,10 +73,10 @@ namespace Solix.Booking.Api.Controllers
 		}
 
 		[HttpGet("get-by-id/{IdCliente}")]
-		public async Task<IActionResult> ObtenerPorId(int IdCliente,[FromServices] IObtenerClientePorIdQuery obtenerClientePorIdQuery)
+		public async Task<IActionResult> ObtenerPorId(int IdCliente, [FromServices] IObtenerClientePorIdQuery obtenerClientePorIdQuery)
 		{
-			if(IdCliente == 0)
-				return StatusCode(StatusCodes.Status400BadRequest,ResponseApiService.Response(StatusCodes.Status400BadRequest));
+			if (IdCliente == 0)
+				return StatusCode(StatusCodes.Status400BadRequest, ResponseApiService.Response(StatusCodes.Status400BadRequest));
 
 			var data = await obtenerClientePorIdQuery.Ejecutar(IdCliente);
 
@@ -93,7 +90,7 @@ namespace Solix.Booking.Api.Controllers
 		public async Task<IActionResult> ObtenerPorNroDocumento(string numeroDocumento, [FromServices] IObtenerClientePorDocumentoQuery clientePorDocumentoQuery)
 		{
 			//valido si el string esta vacio o no
-			if(string.IsNullOrEmpty(numeroDocumento))
+			if (string.IsNullOrEmpty(numeroDocumento))
 				return StatusCode(StatusCodes.Status400BadRequest, ResponseApiService.Response(StatusCodes.Status400BadRequest));
 
 			//Obtengo el resultado de la db
@@ -104,6 +101,5 @@ namespace Solix.Booking.Api.Controllers
 
 			return StatusCode(StatusCodes.Status200OK, ResponseApiService.Response(StatusCodes.Status200OK, data, $"Se obtuvo el cliente con nro de documento: {numeroDocumento}"));
 		}
-
 	}
 }

@@ -3,7 +3,7 @@ using Solix.Booking.Application.Interfaces;
 
 namespace Solix.Booking.Application.Database.Reservas.Queries.ObtenerTodasLasReservas
 {
-	public class ObtenerTodasLasReservasQuery : IObtenerTodasLasReservasQuery 
+	public class ObtenerTodasLasReservasQuery : IObtenerTodasLasReservasQuery
 	{
 		private readonly IDatabaseService _databaseService;
 

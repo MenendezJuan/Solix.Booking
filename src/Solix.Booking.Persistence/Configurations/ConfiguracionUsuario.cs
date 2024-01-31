@@ -25,7 +25,6 @@ namespace Solix.Booking.Persistence.Configurations
 				.WithOne(x => x.usuario)
 				//La que relaciona
 				.HasForeignKey(x => x.IdUsuario);
-
 		}
 	}
 }

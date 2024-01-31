@@ -11,7 +11,7 @@ namespace Solix.Booking.Application.Interfaces
 
 		DbSet<Cliente> cliente { get; set; }
 		DbSet<Reserva> reserva { get; set; }
-		Task<bool> SaveAsync();
 
+		Task<bool> SaveAsync();
 	}
 }

@@ -11,7 +11,7 @@ namespace Solix.Booking.Application.Database.Usuarios.Queries.GetAllUser
 
 		public ObtenerTodosLosUsuariosQuery(IDatabaseService databaseService, IMapper mapper)
 		{
-			_databaseService = databaseService; 
+			_databaseService = databaseService;
 			_mapper = mapper;
 		}
 
@@ -19,7 +19,7 @@ namespace Solix.Booking.Application.Database.Usuarios.Queries.GetAllUser
 		{
 			var ListEntity = await _databaseService.usuario.ToListAsync();
 			//Convierto toda la lista de entidades de la DB, en el modelo que tengo
-			return _mapper.Map<List<ObtenerTodosLosUsuariosDto>>(ListEntity);   
+			return _mapper.Map<List<ObtenerTodosLosUsuariosDto>>(ListEntity);
 		}
 	}
 }

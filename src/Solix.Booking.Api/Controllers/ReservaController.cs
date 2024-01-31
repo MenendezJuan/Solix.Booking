@@ -12,7 +12,6 @@ namespace Solix.Booking.Api.Controllers
 	[Route("api/v1/reserva")]
 	[ApiController]
 	[TypeFilter(typeof(ExceptionManager))]
-
 	public class ReservaController : ControllerBase
 	{
 		[HttpPost("create")]
@@ -20,7 +19,7 @@ namespace Solix.Booking.Api.Controllers
 		{
 			var validate = await validator.ValidateAsync(reservaDto);
 
-			if(!validate.IsValid)
+			if (!validate.IsValid)
 				return StatusCode(StatusCodes.Status400BadRequest, ResponseApiService.Response(StatusCodes.Status400BadRequest, validate.Errors));
 
 			var data = await crearReservaCommand.Ejecutar(reservaDto);
@@ -42,7 +41,6 @@ namespace Solix.Booking.Api.Controllers
 
 		//Esta es otra forma de hacer nuestra api, pasamos por parametro y no por la ruta como habiamos hecho
 		[HttpGet("get-by-documentNumber")]
-		//En este caso sera FromQuery, dado que no usamos el automapper para este metodo
 		public async Task<IActionResult> ObtenerPorNroDocumento([FromQuery] string numeroDocumento, [FromServices] IObtenerReservasPorNroDocumentoQuery obtenerReservasPorNroDocumento)
 		{
 			//valido si el string esta vacio o no
@@ -59,7 +57,6 @@ namespace Solix.Booking.Api.Controllers
 		}
 
 		[HttpGet("get-by-type")]
-		//En este caso sera FromQuery, dado que no usamos el automapper para este metodo
 		public async Task<IActionResult> ObtenerPorTipo([FromQuery] string tipoReserva, [FromServices] IObtenerReservasPorTipoQuery obtenerReservasPorTipo)
 		{
 			//valido si el string esta vacio o no
@@ -76,6 +73,5 @@ namespace Solix.Booking.Api.Controllers
 			//En caso de exito
 			return StatusCode(StatusCodes.Status200OK, ResponseApiService.Response(StatusCodes.Status200OK, data, $"Se obtuvo la reserva del cliente con tipo de reserva: {tipoReserva}"));
 		}
-
 	}
 }

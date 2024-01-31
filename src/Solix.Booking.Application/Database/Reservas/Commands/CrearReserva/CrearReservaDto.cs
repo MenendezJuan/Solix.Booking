@@ -7,6 +7,5 @@
 		public string TipoReserva { get; set; }
 		public int IdCliente { get; set; }
 		public int IdUsuario { get; set; }
-
 	}
 }

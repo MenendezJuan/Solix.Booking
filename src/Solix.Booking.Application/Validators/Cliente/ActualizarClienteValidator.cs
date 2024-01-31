@@ -15,7 +15,7 @@ namespace Solix.Booking.Application.Validators.Cliente
 				.NotNull()
 				.NotEmpty()
 				.MaximumLength(50);
-			
+
 			RuleFor(x => x.Documento)
 				.NotNull()
 				.NotEmpty()

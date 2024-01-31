@@ -5,23 +5,23 @@ namespace Solix.Booking.Api
 {
 	public static class DependencyInjectionService
 	{
-		public static IServiceCollection AddWebApi (this IServiceCollection services)
+		public static IServiceCollection AddWebApi(this IServiceCollection services)
 		{
 			services.AddSwaggerGen(options =>
 			{
-			options.SwaggerDoc("v1", new OpenApiInfo{
+				options.SwaggerDoc("v1", new OpenApiInfo
+				{
 					Version = "v1",
 					Title = "Solix Booking API",
 					Description = "Administracion de APIs para Booking APP"
-
-			});
+				});
 				//Integrar token de autorizacion con swagger
 				options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
 				{
 					In = ParameterLocation.Header,
 					Description = "Ingrese un token valido",
 					Name = "Authorization",
-					Type = SecuritySchemeType.Http, 
+					Type = SecuritySchemeType.Http,
 					BearerFormat = "JWT",
 					Scheme = "Bearer"
 				});

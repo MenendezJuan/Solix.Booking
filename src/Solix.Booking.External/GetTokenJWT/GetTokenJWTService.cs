@@ -1,24 +1,25 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using Solix.Booking.Application.External.GetTokenJWT;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using Solix.Booking.Application.External.GetTokenJWT;
 
 namespace Solix.Booking.External.AddJWT
 {
 	public class GetTokenJWTService : IGetTokenJWTService
-    {
-        private readonly IConfiguration _configuration;
-        public GetTokenJWTService(IConfiguration configuration)
-        {
-            _configuration = configuration;
-        }
+	{
+		private readonly IConfiguration _configuration;
 
-        //Creo un metodo que devuelve string, dado que el token es un string
-        
-        public string Ejecutar(string id)
-        {
+		public GetTokenJWTService(IConfiguration configuration)
+		{
+			_configuration = configuration;
+		}
+
+		//Creo un metodo que devuelve string, dado que el token es un string
+
+		public string Ejecutar(string id)
+		{
 			var tokenHandler = new JwtSecurityTokenHandler();
 			string key = _configuration["JwtConfig:SecretKey"] ?? string.Empty;
 
@@ -40,9 +41,6 @@ namespace Solix.Booking.External.AddJWT
 			var token = tokenHandler.CreateToken(tokenDescriptor);
 			var tokenString = tokenHandler.WriteToken(token);
 			return tokenString;
-
 		}
-
-
-    }
+	}
 }

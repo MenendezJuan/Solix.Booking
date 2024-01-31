@@ -26,7 +26,6 @@ namespace Solix.Booking.Api.Controllers
 		public async Task<IActionResult> CrearUsuario([FromBody] CrearUsuarioDto crearUsuarioDto, [FromServices] ICrearUsuarioCommand crearUsuarioCommand,
 			[FromServices] IValidator<CrearUsuarioDto> validator)
 		{
-
 			var validate = await validator.ValidateAsync(crearUsuarioDto);
 
 			// Si al menos una de las reglas de validación no se cumple, IsValid será false.
@@ -65,7 +64,6 @@ namespace Solix.Booking.Api.Controllers
 
 		//Por parametro vamos a tener que recibir un Id de usuario para eliminarlo
 		[HttpDelete("delete/{IdUsuario}")]
-		//El id usuario lo agarra de lo que reciba por URL y entra al metodo
 		public async Task<IActionResult> EliminarUsuario(int IdUsuario, [FromServices] IEliminarUsuarioCommand eliminarUsuarioCommand)
 		{
 			//Valida que no sea igual a 0
@@ -75,7 +73,6 @@ namespace Solix.Booking.Api.Controllers
 			}
 
 			var data = await eliminarUsuarioCommand.Ejecutar(IdUsuario);
-
 
 			//si no lo encuentra, es decir, devuelve false, va a tirar un statuscode
 			if (!data)
@@ -88,7 +85,6 @@ namespace Solix.Booking.Api.Controllers
 
 		//Al ser query va con metodo GET
 		[HttpGet("get-all")]
-		//El fromBody solo se usa para los commands, para insertar data, en este caso al ser una query pasamos el Dto, pero dentro del metodo
 		public async Task<IActionResult> ObtenerTodos([FromServices] IObtenerTodosLosUsuariosQuery obtenerTodosLosUsuarios)
 		{
 			//Dentro del metodo invoco el servicio y guardo el resultado en data
@@ -101,7 +97,6 @@ namespace Solix.Booking.Api.Controllers
 		}
 
 		[HttpGet("get-by-id/{IdUsuario}")]
-		//Los servicios son las INTERFACES
 		public async Task<IActionResult> ObtenerUsuarioPorId(int IdUsuario, [FromServices] IObtenerUsuarioPorIdQuery obtenerUsuarioPorId)
 		{
 			if (IdUsuario == 0)

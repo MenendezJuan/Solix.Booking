@@ -40,51 +40,69 @@ namespace Solix.Booking.Application
 			//Lo creo
 			services.AddSingleton(mapper.CreateMapper());
 			//Registro servicios
+
 			#region ServicioUsuario
+
 			services.AddTransient<ICrearUsuarioCommand, CrearUsuarioCommand>();
 			services.AddTransient<IActualizarUsuarioCommand, ActualizarUsuarioCommand>();
 			services.AddTransient<IEliminarUsuarioCommand, EliminarUsuarioCommand>();
 			services.AddTransient<IActualizarContraseñaUsuarioCommand, ActualizarContraseñaUsuarioCommand>();
 			services.AddTransient<IObtenerTodosLosUsuariosQuery, ObtenerTodosLosUsuariosQuery>();
 			services.AddTransient<IObtenerUsuarioPorIdQuery, ObtenerUsuarioPorIdQuery>();
-			services.AddTransient<IObtenerUsuarioPorNombreYContraseñaQuery ,ObtenerUsuarioPorNombreYContraseñaQuery>();
-			#endregion
+			services.AddTransient<IObtenerUsuarioPorNombreYContraseñaQuery, ObtenerUsuarioPorNombreYContraseñaQuery>();
+
+			#endregion ServicioUsuario
+
 			#region ServicioCliente
+
 			services.AddTransient<ICrearClienteCommand, CrearClienteCommand>();
 			services.AddTransient<IActualizarClienteCommand, ActualizarClienteCommand>();
 			services.AddTransient<IEliminarClienteCommand, EliminarClienteCommand>();
 			services.AddTransient<IObtenerTodosLosClientesQuery, ObtenerTodosLosClientesQuery>();
 			services.AddTransient<IObtenerClientePorIdQuery, ObtenerClientePorIdQuery>();
 			services.AddTransient<IObtenerClientePorDocumentoQuery, ObtenerClientePorDocumentoQuery>();
-			#endregion
+
+			#endregion ServicioCliente
+
 			#region ServicioReserva
+
 			services.AddTransient<ICrearReservaCommand, CrearReservaCommand>();
 			services.AddTransient<IObtenerTodasLasReservasQuery, ObtenerTodasLasReservasQuery>();
 			services.AddTransient<IObtenerReservasPorNroDocumentoQuery, ObtenerReservasPorNroDocumentoQuery>();
 			services.AddTransient<IObtenerReservasPorTipoQuery, ObtenerReservasPorTipoQuery>();
-			#endregion
+
+			#endregion ServicioReserva
 
 			//Las validaciones funcionan como un servicio, debo agregarlas al servicio de inyeccion de dependencias
+
 			#region Validator
+
 			#region ValidacionUsuarios
+
 			//Inyectamos los services
 			services.AddScoped<IValidator<CrearUsuarioDto>, CrearValidatorUsuario>();
 			services.AddScoped<IValidator<ActualizarUsuarioDto>, UpdateUsuarioValidator>();
 			services.AddScoped<IValidator<ActualizarContraseñaUsuarioDto>, ActualizarPassUsuarioValidator>();
 			//Este no usamos un modelo, pasamos los parametros, los strings otra vez
 			services.AddScoped<IValidator<(string, string)>, ObtenerUsuarioPorNombreYContraseñaValidator>();
-			#endregion
+
+			#endregion ValidacionUsuarios
 
 			#region ValidacionClientes
+
 			services.AddScoped<IValidator<CrearClienteDto>, CrearValidatorCliente>();
 			services.AddScoped<IValidator<ActualizarClienteDto>, ActualizarClienteValidator>();
-			#endregion
+
+			#endregion ValidacionClientes
 
 			#region ValidacionReservas
-			services.AddScoped<IValidator<CrearReservaDto>, CrearValidatorReserva>();
-			#endregion
 
-			#endregion
+			services.AddScoped<IValidator<CrearReservaDto>, CrearValidatorReserva>();
+
+			#endregion ValidacionReservas
+
+			#endregion Validator
+
 			return services;
 		}
 	}

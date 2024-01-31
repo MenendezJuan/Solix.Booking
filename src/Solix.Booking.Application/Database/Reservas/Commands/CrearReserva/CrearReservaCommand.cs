@@ -1,6 +1,4 @@
 ﻿using AutoMapper;
-using Microsoft.Data.SqlClient;
-using Microsoft.EntityFrameworkCore;
 using Solix.Booking.Application.Interfaces;
 using Solix.Booking.Domain.Entities.Reservas;
 
@@ -19,10 +17,10 @@ namespace Solix.Booking.Application.Database.Reservas.Commands.CrearReserva
 
 		public async Task<CrearReservaDto> Ejecutar(CrearReservaDto modelo)
 		{
-				var entity = _mapper.Map<Reserva>(modelo);
-				await _dataBaseService.reserva.AddAsync(entity);
-				await _dataBaseService.SaveAsync();
-				return modelo;
+			var entity = _mapper.Map<Reserva>(modelo);
+			await _dataBaseService.reserva.AddAsync(entity);
+			await _dataBaseService.SaveAsync();
+			return modelo;
 		}
 	}
 }

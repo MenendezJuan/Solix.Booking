@@ -5,11 +5,11 @@ namespace Solix.Booking.Application.Validators.Usuario
 {
 	public class UpdateUsuarioValidator : AbstractValidator<ActualizarUsuarioDto>
 	{
-        public UpdateUsuarioValidator()
-        {
-            RuleFor(x=>x.IdUsuario)
-                .NotNull()
-                .GreaterThan(0);
+		public UpdateUsuarioValidator()
+		{
+			RuleFor(x => x.IdUsuario)
+				.NotNull()
+				.GreaterThan(0);
 			RuleFor(x => x.Nombre)
 				.NotNull()
 				.WithMessage("El campo no puede ser nulo")
@@ -28,5 +28,5 @@ namespace Solix.Booking.Application.Validators.Usuario
 				.NotEmpty()
 				.MaximumLength(10);
 		}
-    }
+	}
 }

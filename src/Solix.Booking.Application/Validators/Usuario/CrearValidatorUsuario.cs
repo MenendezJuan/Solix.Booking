@@ -7,7 +7,7 @@ namespace Solix.Booking.Application.Validators.Usuario
 	{
 		public CrearValidatorUsuario()
 		{
-			RuleFor(x=>x.Nombre)
+			RuleFor(x => x.Nombre)
 				.NotNull()
 				.WithMessage("El campo no puede ser nulo")
 					.NotEmpty().WithMessage("El campo no puede ser vacio")

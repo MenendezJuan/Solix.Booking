@@ -1,11 +1,11 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using Microsoft.ApplicationInsights.AspNetCore.Extensions;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
 using Solix.Booking.Application.External.GetTokenJWT;
 using Solix.Booking.External.AddJWT;
-using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using Microsoft.ApplicationInsights.AspNetCore.Extensions;
 
 namespace Solix.Booking.External
 {
@@ -14,7 +14,6 @@ namespace Solix.Booking.External
 		public static IServiceCollection AddExternal(this IServiceCollection services,
 			IConfiguration configuration)
 		{
-
 			services.AddSingleton<IGetTokenJWTService, GetTokenJWTService>();
 
 			//Agrego el servicio y la configuracion

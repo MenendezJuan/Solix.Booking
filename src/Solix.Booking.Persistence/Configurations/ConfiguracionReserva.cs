@@ -21,11 +21,10 @@ namespace Solix.Booking.Persistence.Configurations
 				.WithMany(x => x.reserva)
 				.HasForeignKey(x => x.IdUsuario);
 
-			//Relaciono con la tabla clientes 
-			entityBuilder.HasOne(x=>x.cliente)
-				.WithMany(x=>x.reserva)
-				.HasForeignKey(x=>x.IdCliente);
-
+			//Relaciono con la tabla clientes
+			entityBuilder.HasOne(x => x.cliente)
+				.WithMany(x => x.reserva)
+				.HasForeignKey(x => x.IdCliente);
 		}
 	}
 }

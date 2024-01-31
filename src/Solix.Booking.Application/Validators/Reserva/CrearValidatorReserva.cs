@@ -5,12 +5,12 @@ namespace Solix.Booking.Application.Validators.Reserva
 {
 	public class CrearValidatorReserva : AbstractValidator<CrearReservaDto>
 	{
-        public CrearValidatorReserva()
-        {
-            RuleFor(x => x.CodigoReserva)
-                .NotNull()
-                .NotEmpty()
-                .Length(8);
+		public CrearValidatorReserva()
+		{
+			RuleFor(x => x.CodigoReserva)
+				.NotNull()
+				.NotEmpty()
+				.Length(8);
 			RuleFor(x => x.TipoReserva)
 				.NotNull()
 				.NotEmpty()
@@ -22,5 +22,5 @@ namespace Solix.Booking.Application.Validators.Reserva
 				.NotNull()
 				.GreaterThan(0);
 		}
-    }
+	}
 }

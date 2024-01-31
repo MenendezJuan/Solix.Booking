@@ -6,9 +6,10 @@
 		public DateTime RegistrarFecha { get; set; }
 		public string CodigoReserva { get; set; }
 		public string TipoReserva { get; set; }
+
 		//Personalizo el DTO
 		public string ClienteNombre { get; set; }
-		public string DocumentoCliente { get; set; }
 
+		public string DocumentoCliente { get; set; }
 	}
 }

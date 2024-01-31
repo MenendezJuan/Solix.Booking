@@ -2,6 +2,6 @@
 {
 	public interface IEliminarClienteCommand
 	{
-	Task<bool> Ejecutar(int IdCliente);
+		Task<bool> Ejecutar(int IdCliente);
 	}
 }

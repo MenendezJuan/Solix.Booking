@@ -10,7 +10,7 @@ namespace Solix.Booking.Application.Features
 		{
 			bool success = false;
 
-			if(statusCode >= 200 && statusCode < 300)
+			if (statusCode >= 200 && statusCode < 300)
 			{
 				//Significa que se completo exitosamente la peticion
 				success = true;

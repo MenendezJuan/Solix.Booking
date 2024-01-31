@@ -15,7 +15,6 @@ namespace Solix.Booking.Persistence.Database
 		/// <param name="options"></param>
 		public DatabaseService(DbContextOptions options) : base(options)
 		{
-
 		}
 
 		public virtual DbSet<Usuario> usuario { get; set; }
@@ -40,7 +39,5 @@ namespace Solix.Booking.Persistence.Database
 			new ConfiguracionCliente(modelBuilder.Entity<Cliente>());
 			new ConfiguracionReserva(modelBuilder.Entity<Reserva>());
 		}
-
-
 	}
 }
