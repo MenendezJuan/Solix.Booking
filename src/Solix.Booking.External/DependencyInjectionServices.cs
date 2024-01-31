@@ -5,8 +5,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Solix.Booking.Application.External.ApplicationInsights;
 using Solix.Booking.Application.External.GetTokenJWT;
+using Solix.Booking.Application.External.MailKitEmail;
 using Solix.Booking.External.AddJWT;
 using Solix.Booking.External.ApplicationInsights;
+using Solix.Booking.External.EmailServices;
 using System.Text;
 
 namespace Solix.Booking.External
@@ -43,6 +45,9 @@ namespace Solix.Booking.External
 
 
 			services.AddSingleton<IInsertApplicationInsightsService, InsertApplicationInsightsService>();
+
+			// Registro del servicio de envío de correo
+			services.AddTransient<IEmailServices, SendEmailService>();
 
 			return services;
 		}
