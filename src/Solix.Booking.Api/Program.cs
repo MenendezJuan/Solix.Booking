@@ -1,8 +1,6 @@
 using Solix.Booking.Api;
 using Solix.Booking.Application;
-using Solix.Booking.Application.Database.Reservas.Commands.CrearReserva;
 using Solix.Booking.Common;
-using Solix.Booking.Domain.Enums;
 using Solix.Booking.External;
 using Solix.Booking.Persistence;
 
@@ -24,18 +22,13 @@ builder.Services.AddControllers();
 
 var app = builder.Build();
 
-app.MapPost("/test", async (ICrearReservaCommand service) =>
+app.UseSwagger();
+app.UseSwaggerUI(options =>
 {
-	var modelo = new CrearReservaDto
-	{
-		RegistrarFecha = DateTime.Now,
-		CodigoReserva = "BOOK004",
-		TipoReserva = TipoDeReserva.Renovacion.ToString(),
-		IdUsuario = 1,
-		IdCliente = 3
-	};
-	return await service.Ejecutar(modelo);
+	options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
+	options.RoutePrefix = string.Empty;
 });
-
+app.UseAuthentication();
+app.UseAuthorization();
 app.MapControllers();
 app.Run();

@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Solix.Booking.Application.External.GetTokenJWT
+﻿namespace Solix.Booking.Application.External.GetTokenJWT
 {
-	internal interface IGetTokenJWTService
+	public interface IGetTokenJWTService
 	{
+		string Ejecutar(string id);
 	}
 }

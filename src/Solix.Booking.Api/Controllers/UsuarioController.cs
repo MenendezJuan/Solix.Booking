@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Solix.Booking.Application.Database.Usuario.Commands.CreateUser;
 using Solix.Booking.Application.Database.Usuarios.Commands.ActualizarPassUsuario;
@@ -9,11 +10,13 @@ using Solix.Booking.Application.Database.Usuarios.Queries.GetAllUser;
 using Solix.Booking.Application.Database.Usuarios.Queries.GetUserById;
 using Solix.Booking.Application.Database.Usuarios.Queries.GetUserByUsernameAndPassword;
 using Solix.Booking.Application.Exceptions;
+using Solix.Booking.Application.External.GetTokenJWT;
 using Solix.Booking.Application.Features;
-using System.ComponentModel.DataAnnotations;
 
 namespace Solix.Booking.Api.Controllers
 {
+	//[AllowAnonymous]
+	[Authorize]
 	[Route("api/v1/usuario")]
 	[ApiController]
 	[TypeFilter(typeof(ExceptionManager))]
@@ -113,8 +116,10 @@ namespace Solix.Booking.Api.Controllers
 			return StatusCode(StatusCodes.Status200OK, ResponseApiService.Response(StatusCodes.Status200OK, data, $"Se ha obtenido el usuario con Id: {IdUsuario}"));
 		}
 
+		[AllowAnonymous]
 		[HttpGet("get-by-username-pass/{nombreUsuario}/{password}")]
-		public async Task<IActionResult> ObtenerPorNombreUsuarioyPass(string nombreUsuario, string password, [FromServices] IObtenerUsuarioPorNombreYContraseñaQuery porNombreYContraseñaQuery, [FromServices] IValidator<(string , string)> validator)
+		public async Task<IActionResult> ObtenerPorNombreUsuarioyPass(string nombreUsuario, string password, [FromServices] IObtenerUsuarioPorNombreYContraseñaQuery porNombreYContraseñaQuery, [FromServices] IValidator<(string, string)> validator,
+			[FromServices] IGetTokenJWTService getTokenJWT)
 		{
 			var validate = await validator.ValidateAsync((nombreUsuario, password));
 
@@ -125,6 +130,9 @@ namespace Solix.Booking.Api.Controllers
 
 			if (data == null)
 				return StatusCode(StatusCodes.Status404NotFound, ResponseApiService.Response(StatusCodes.Status404NotFound));
+
+			//De esta manera obtengo el token
+			data.Token = getTokenJWT.Ejecutar(data.IdUsuario.ToString());
 
 			return StatusCode(StatusCodes.Status200OK, ResponseApiService.Response(StatusCodes.Status200OK, data, "Se ha obtenido el usuario"));
 		}
